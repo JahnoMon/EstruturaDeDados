@@ -20,13 +20,13 @@ public class Intercala {
 		}
     }
     
-    public static void conferir(int[] array){
+    public static Boolean estaOrdenado(int[] array){
         for(int i = 0; i < array.length - 1; i++){
             if(array[i] > array[i + 1]){
-                System.out.print("-1");
-                System.exit(1);
+                return false;
             }
         }
+        return true;
     }
 
 	public static void printArray(int[] array){
@@ -58,21 +58,16 @@ public class Intercala {
 			array2[j] = Integer.parseInt(inputArray2[j]);
 		}
 		
-		conferir(array);
-		conferir(array2);
-		
 		int[] arraySoma = new int[array.length + array2.length];
 		
 		System.arraycopy(array, 0, arraySoma, 0, array.length);
 		System.arraycopy(array2, 0 , arraySoma, array.length, array2.length);
 		
-		selectionSort(arraySoma);
-		
-		printArray(arraySoma);
+		if (estaOrdenado(array) && estaOrdenado(array2)){
+		    selectionSort(arraySoma);    
+		    printArray(arraySoma);
+		} else{
+		    System.out.print(-1);
+		} 
 	}
 }
-
-
-
-
-
